@@ -1,1 +1,5 @@
 import random  
+
+
+
+def main():
