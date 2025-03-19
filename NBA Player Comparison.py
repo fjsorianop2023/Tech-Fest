@@ -1,3 +1,6 @@
+import sqlite3
+def conectar_db():
+    conn = sqlite3.connect("nba.sqlite")
 players = [
     {"name": "Devin Booker", "height": 1.96, "weight": 93, "playstyle": ["scorer", "playmaker"]},
     {"name": "Klay Thompson", "height": 1.98, "weight": 97, "playstyle": ["shooter"]},
