@@ -5,3 +5,12 @@ players = [
     {"name": "Stephen Curry", "height": 1.88, "weight": 84, "playstyle": ["shooter", "playmaker"]},
     {"name": "Giannis Antetokounmpo", "height": 2.11, "weight": 109, "playstyle": ["slasher", "defender"]},
 ]
+
+def calculate_similarity(user, player):
+    height_diff = abs(user["height"] - player["height"])
+    weight_diff = abs(user["weight"] - player["weight"])
+    playstyle_match = len(set(user["playstyle"]) & set(player["playstyle"]))
+    
+    similarity_score = (1 - height_diff) + (1 - weight_diff / 50) + (2 * playstyle_match)
+    return similarity_score
+
