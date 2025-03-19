@@ -14,3 +14,13 @@ def calculate_similarity(user, player):
     similarity_score = (1 - height_diff) + (1 - weight_diff / 50) + (2 * playstyle_match)
     return similarity_score
 
+
+user_height = float(input("Enter your height (in meters): "))
+user_weight = float(input("Enter your weight (in kg): "))
+user_playstyle = input("Enter your playstyle (e.g., shooter, playmaker, defender): ").split(", ")
+
+
+user_profile = {"height": user_height, "weight": user_weight, "playstyle": user_playstyle}
+
+
+
