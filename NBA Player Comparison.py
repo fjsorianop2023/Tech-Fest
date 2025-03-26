@@ -1,29 +1,27 @@
 import sqlite3
+
 def conectar_db():
-    conn = sqlite3.connect("nba.sqlite")
-players = [
-    {"name": "Devin Booker", "height": 1.96, "weight": 93, "playstyle": ["scorer", "playmaker"]},
-    {"name": "Klay Thompson", "height": 1.98, "weight": 97, "playstyle": ["shooter"]},
-    {"name": "Bradley Beal", "height": 1.93, "weight": 94, "playstyle": ["scorer", "playmaker"]},
-    {"name": "Stephen Curry", "height": 1.88, "weight": 84, "playstyle": ["shooter", "playmaker"]},
-    {"name": "Giannis Antetokounmpo", "height": 2.11, "weight": 109, "playstyle": ["slasher", "defender"]},
-]
+    return sqlite3.connect("/Users/Saul/Downloads/archive/nba.sqlite")
 
-def calculate_similarity(user, player):
-    height_diff = abs(user["height"] - player["height"])
-    weight_diff = abs(user["weight"] - player["weight"])
-    playstyle_match = len(set(user["playstyle"]) & set(player["playstyle"]))
-    
-    similarity_score = (1 - height_diff) + (1 - weight_diff / 50) + (2 * playstyle_match)
-    return similarity_score
+def convert_height_to_meters(height_str):
+    try:
+        feet, inches = map(int, height_str.split("-"))
+        total_inches = feet * 12 + inches
+        meters = total_inches * 0.0254
+        return round(meters, 2)
+    except:
+        return None
 
+def meters_to_feet_inches(meters):
+    total_inches = int(round(meters / 0.0254))
+    feet = total_inches // 12
+    inches = total_inches % 12
+    return f"{feet}-{inches}"
 
-user_height = float(input("Enter your height (in meters): "))
-user_weight = float(input("Enter your weight (in kg): "))
-user_playstyle = input("Enter your playstyle (e.g., shooter, playmaker, defender): ").split(", ")
+def lbs_to_kg(lbs):
+    return round(lbs * 0.453592, 2)
 
-
-user_profile = {"height": user_height, "weight": user_weight, "playstyle": user_playstyle}
-
+def kg_to_lbs(kg):
+    return round(kg / 0.453592, 1)
 
 
