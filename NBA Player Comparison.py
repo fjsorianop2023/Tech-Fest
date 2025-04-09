@@ -24,4 +24,21 @@ def lbs_to_kg(lbs):
 def kg_to_lbs(kg):
     return round(kg / 0.453592, 1)
 
+def position_to_playstyle(pos):
+    pos = pos.upper()
+    if "PG" in pos:
+        return ["playmaker", "shooter"]
+    elif "SG" in pos:
+        return ["scorer", "shooter"]
+    elif "SF" in pos:
+        return ["slasher", "defender"]
+    elif "PF" in pos:
+        return ["rebounder", "defender"]
+    elif "C" in pos:
+        return ["rebounder", "defender"]
+    else:
+        return ["versatile"]
+
+
+
 
