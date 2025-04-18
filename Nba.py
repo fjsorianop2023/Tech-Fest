@@ -1,7 +1,7 @@
 import sqlite3
 
 def conectar_db():
-    return sqlite3.connect("/Users/Saul/Downloads/archive/nba.sqlite")
+    return sqlite3.connect("/Users/fernandosoriano/Downloads/nba.sqlite")
 
 def convert_height_to_meters(height_str):
     try:
